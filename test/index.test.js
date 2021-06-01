@@ -21,13 +21,6 @@ describe("Stage I - Testing the test env", () => {
         expect(false).toBeFalsy()
     })
 
-    it("should expect that the test key is 123", () => {
-        console.log(process.env.TEST_KEY)
-        expect(process.env.TEST_KEY).toBeDefined()
-        expect(process.env.TEST_KEY).toBe("123")
-    })
-
-
 })
 
 describe("Checking application main endpoints", () => {
