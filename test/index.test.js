@@ -82,6 +82,22 @@ describe("Checking application main endpoints", () => {
 
     })
 
+    let productId;
+
+    it('should check that the /products endpoint is allowing POST requests with valid data', async () => {
+      const response = await request.post('/products').send(validData);
+      expect(response.status).toBe(201);
+      expect(response.body._id).toBeDefined();
+      productId = response.body._id;
+      expect(response.body.description).toEqual(validData.description);
+    });
+
+    it('gives 404 status if the product id query not found', async () => {
+      const nonExistId = 'this is not an id';
+      const response = await request.get('/products/' + nonExistId);
+      expect(response.status).toBe(404);
+    });
+
 })
 
 beforeAll((done) => {
